@@ -1,0 +1,37 @@
+extends ./layout/index
+block contenido
+    main.container.mt-5 
+        h1.text-center.my-4 #{pagina}
+        
+        //Reutilizando codigo
+        include ./layout/bloque_testimoniales
+
+        .row 
+
+        .col-md-12
+            h2.d-block.w-100.text-center Agrega tu testimonio 
+            if(errores)
+                each error in errores 
+                    .alert.col.alert-danger.text-center= error.mensaje
+
+ 
+        .row.justify-content-center.col
+            .col-md-8 
+                form(action="", method="post") 
+                    .form-group 
+                        label(for="nombre") Nombre 
+                        input#nombre(type="text", class="form-control", name="nombre", placeholder="Ingresa tu nombre", value=nombre)
+                    .form-group 
+                        label(for="correo") Email
+                        input#correo(type="text", class="form-control", name="correo", placeholder="Ingresa tu correo", value=correo)
+                    .form-group 
+                        label(for="mensaje") Mensaje
+                        textarea#mesaje(class="form-control", name="mensaje", placeholder="Ingresa tu mensaje")=mensaje
+
+            
+                    input(type="submit", value="Agregar", class="btn btn-success w-100")
+
+                   
+
+
+
