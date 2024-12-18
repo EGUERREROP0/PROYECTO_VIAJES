@@ -13,7 +13,7 @@ const paginaInicio = async (req, res) => {
             Testimonial.findAll({ limit: 3 })
         ])*/
         res.render('inicio', {
-            pagina: 'Inicio',
+            pagina: 'inicio',
             clase: 'home',
             /*viajes,
             testimoniales*/
