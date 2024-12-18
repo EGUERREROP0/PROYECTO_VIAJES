@@ -2,23 +2,23 @@ import { Testimonial } from "../models/Testimonial.js"
 import { Viajes } from "../models/Viaje.js"
 
 const paginaInicio = async (req, res) => {
-    /* const promiseDB = []
-     promiseDB.push(Viajes.findAll({ limit: 3 }))
-     promiseDB.push(Testimonial.findAll({ limit: 3 }))*/
+    const promiseDB = []
+    promiseDB.push(Viajes.findAll({ limit: 3 }))
+    promiseDB.push(Testimonial.findAll({ limit: 3 }))
 
     try {
-        // const resultado = await Promise.all(promiseDB)
-        const [viajes, testimoniales] = await Promise.all([
+        const resultado = await Promise.all(promiseDB)
+        /*const [viajes, testimoniales] = await Promise.all([
             Viajes.findAll({ limit: 3 }),
             Testimonial.findAll({ limit: 3 })
-        ])
+        ])*/
         res.render('Inicio', {
             pagina: 'Inicio',
             clase: 'home',
-            viajes,
-            testimoniales
-            /* viajes: resultado[0],
-             testimoniales: resultado[1],*/
+            /*viajes,
+            testimoniales*/
+            viajes: resultado[0],
+            testimoniales: resultado[1],
         })
     } catch (error) {
         console.log(error)
